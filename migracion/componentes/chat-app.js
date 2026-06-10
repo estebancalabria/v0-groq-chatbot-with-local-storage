@@ -63,7 +63,7 @@ class ChatApp extends HTMLElement {
       this._conversations = this._conversations.filter(c => c.id !== e.detail);
       saveConversations(this._conversations);
       if (this._activeConversationId === e.detail) {
-        this._activeConversationId = this._conversations[0]?.id || null;
+        this._activeConversationId = (this._conversations[0] && this._conversations[0].id) || null;
         saveActiveConversationId(this._activeConversationId);
       }
       this._sync();

@@ -44,7 +44,7 @@ export async function sendMessageToGroq(apiKey, messages, onChunk) {
           const content = parsed.choices?.[0]?.delta?.content || '';
           if (content) {
             fullContent += content;
-            onChunk?.(content);
+            if (onChunk) { onChunk(content); }
           }
         } catch {
           // Skip invalid JSON

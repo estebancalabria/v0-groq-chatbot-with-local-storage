@@ -285,7 +285,7 @@ class ChatSidebar extends HTMLElement {
 
     const groups = {};
     for (const conv of this._conversations) {
-      const date = this._formatDate(conv.updatedAt);
+      const date = this._formatDate(conv.updatedAt || conv.createdAt || Date.now());
       if (!groups[date]) groups[date] = [];
       groups[date].push(conv);
     }
